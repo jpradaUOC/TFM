@@ -1,0 +1,60 @@
+C    	00001  	Genes_and_Proteins	Orthologs_modules_and_networks	KEGG Orthology (KO)
+C    	00002  	Genes_and_Proteins	Orthologs_modules_and_networks	KEGG modules
+C    	00003  	Genes_and_Proteins	Orthologs_modules_and_networks	KEGG reaction modules
+C    	08907  	Genes_and_Proteins	Orthologs_modules_and_networks	KEGG networks
+C    	01000  	Genes_and_Proteins	Protein_families:metabolism	Enzymes
+C    	01001  	Genes_and_Proteins	Protein_families:metabolism	Protein kinases
+C    	01009  	Genes_and_Proteins	Protein_families:metabolism	Protein phosphatases and associated proteins
+C    	01002  	Genes_and_Proteins	Protein_families:metabolism	Peptidases and inhibitors
+C    	01003  	Genes_and_Proteins	Protein_families:metabolism	Glycosyltransferases
+C    	01005  	Genes_and_Proteins	Protein_families:metabolism	Lipopolysaccharide biosynthesis proteins
+C    	01011  	Genes_and_Proteins	Protein_families:metabolism	Peptidoglycan biosynthesis and degradation proteins
+C    	01004  	Genes_and_Proteins	Protein_families:metabolism	Lipid biosynthesis proteins
+C    	01008  	Genes_and_Proteins	Protein_families:metabolism	Polyketide biosynthesis proteins
+C    	01006  	Genes_and_Proteins	Protein_families:metabolism	Prenyltransferases
+C    	01007  	Genes_and_Proteins	Protein_families:metabolism	Amino acid related enzymes
+C    	00199  	Genes_and_Proteins	Protein_families:metabolism	Cytochrome P450
+C    	00194  	Genes_and_Proteins	Protein_families:metabolism	Photosynthesis proteins
+C    	03000  	Genes_and_Proteins	Protein_families:genetic_information_processing	Transcription factors
+C    	03021  	Genes_and_Proteins	Protein_families:genetic_information_processing	Transcription machinery
+C    	03019  	Genes_and_Proteins	Protein_families:genetic_information_processing	Messenger RNA biogenesis
+C    	03041  	Genes_and_Proteins	Protein_families:genetic_information_processing	Spliceosome
+C    	03011  	Genes_and_Proteins	Protein_families:genetic_information_processing	Ribosome
+C    	03009  	Genes_and_Proteins	Protein_families:genetic_information_processing	Ribosome biogenesis
+C    	03016  	Genes_and_Proteins	Protein_families:genetic_information_processing	Transfer RNA biogenesis
+C    	03012  	Genes_and_Proteins	Protein_families:genetic_information_processing	Translation factors
+C    	03110  	Genes_and_Proteins	Protein_families:genetic_information_processing	Chaperones and folding catalysts
+C    	04131  	Genes_and_Proteins	Protein_families:genetic_information_processing	Membrane trafficking
+C    	04121  	Genes_and_Proteins	Protein_families:genetic_information_processing	Ubiquitin system
+C    	03051  	Genes_and_Proteins	Protein_families:genetic_information_processing	Proteasome
+C    	03032  	Genes_and_Proteins	Protein_families:genetic_information_processing	DNA replication proteins
+C    	03036  	Genes_and_Proteins	Protein_families:genetic_information_processing	Chromosome and associated proteins
+C    	03400  	Genes_and_Proteins	Protein_families:genetic_information_processing	DNA repair and recombination proteins
+C    	03029  	Genes_and_Proteins	Protein_families:genetic_information_processing	Mitochondrial biogenesis
+C    	02000  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Transporters
+C    	02044  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Secretion system
+C    	02042  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Bacterial toxins
+C    	02022  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Two-component system
+C    	02035  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Bacterial motility proteins
+C    	03037  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Cilium and associated proteins
+C    	04812  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Cytoskeleton proteins
+C    	04147  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Exosome
+C    	02048  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Prokaryotic defense system
+C    	04030  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	G protein-coupled receptors
+C    	04050  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Cytokine receptors
+C    	04054  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Pattern recognition receptors
+C    	03310  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Nuclear receptors
+C    	04040  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Ion channels
+C    	04031  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	GTP-binding proteins
+C    	04052  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes	Cytokines and growth factors
+C    	04515  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Cell adhesion molecules
+C    	04090  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	CD molecules
+C    	01504  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Antimicrobial resistance genes
+C    	00535  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Proteoglycans
+C    	00536  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Glycosaminoglycan binding proteins
+C    	00537  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Glycosylphosphatidylinositol (GPI)-anchored proteins
+C    	04091  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	Lectins
+C    	04990  	Genes_and_Proteins	Protein_families:signaling_and_cellular_processes 	omain-containing proteins not elsewhere classified
+C    	03200  	Genes_and_Proteins	Viral_protein_families	Viral proteins
+C    	03210  	Genes_and_Proteins	Viral_protein_families	Viral fusion proteins
+C    	03100  	Genes_and_Proteins	RNA_family	Non-coding RNAs
