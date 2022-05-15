@@ -1,0 +1,193 @@
+---
+title: "**COMPROBACIONES**"
+author: "Jesús Prada Alonso"
+date: "21 de junio de 2018"
+output:
+  html_document:
+    fig_caption: yes
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    toc: yes
+---
+
+
+```{r, echo=FALSE}
+# Define variable containing url
+url <- "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/2000px-R_logo.svg.png"
+```
+
+<center><img src="`r url`"></center>
+
+
+```{r, warning=FALSE, echo=FALSE}
+library(rmarkdown);
+library(knitr);
+opts_chunk$set(warning=FALSE, echo=FALSE, fig.width = 15)
+```
+
+
+```{r,results='hide'}
+library(data.table);
+library(pander);
+library(xtable);
+
+########################## GLOBAL PATHS ##########################
+path_input <- "/bigdata/utiles_jesusprada/TCGA/data/";
+
+############################# SOURCE AUXILIARY SCRIPTS ############
+
+
+############################# GLOBAL QUERYS #############################
+dat <- readRDS(file.path(path_input, "eda_dat.rds"));
+colnames(dat) <- tolower(colnames(dat));
+```
+
+
+```{r,results="asis"}  
+########################## BEGIN MAIN ##########################
+cat("\n")
+cat("\n")
+cat("\n")
+cat("\n# **Dimensions:** ",dim(dat), "\n")
+vars<-colnames(dat)
+for (v in vars) {
+  print(v)
+  cat("\n## Variable ",v,"\n")
+  var<-unlist(as.data.frame(dat)[,v])
+  if ("POSIXct" %in% class(var)){
+    var <- as.character(var);
+  }
+  nulos<- is.na(var) | var=="" | var=="null" | var=="NULL" | var=="NA" | var=="na"
+  var_sn <- var
+  var_sn [nulos == TRUE]<- NA  #transformamos los nulos en NA
+  var_sn <- var_sn [! is.na(var_sn)]  #nos quedamos con los datos sin NA
+  
+   
+  
+  ratio<-sum(nulos) /length(var)
+  ratio_2<-sum(var=="NULL",na.rm = TRUE)/length(var)
+  ratio_main<-sort(table(var_sn)/length(var_sn),decreasing = TRUE)[1]
+  
+   if (100*round(ratio_2-ratio,2) != 0){
+    empty <- sum(is.na(var))
+    empty_str <- sum(var=="", na.rm = TRUE) 
+    null_str <- sum(var=="null", na.rm = TRUE)
+    null_str_u <- sum(var=="NULL", na.rm = TRUE)
+    na_str <-  sum(var=="na", na.rm = TRUE)
+    na_str_u <- sum(var=="NA", na.rm = TRUE)
+    table_nul <- c(empty,empty_str,null_str,null_str_u,na_str,na_str_u)
+    names(table_nul) <- c("empty","empty_str","null_str","null_str_u","na_str","na_str_u")
+    barplot(head(sort(table_nul,decreasing = TRUE),10),las=2)
+      cat("\n")
+      cat("\n")
+      cat("\n")
+     }
+ 
+  
+  cat("### Nas ratio = ",round(100*ratio,2),"% \n")
+  cat("### Nas ratio_2 = ",round(100*ratio_2,2),"% \n")  
+  cat("### Nas dif_ratio = ",round(100*(ratio_2-ratio),2),"% \n")
+  cat("### Main value % = ",round(100*ratio_main,2),"% \n")
+ 
+ 
+  
+  
+  if (ratio >= 1){
+    next;
+  }
+  
+  letter <- grep("^[A-z]",var_sn, value = T)  #coge los que contienen al menos una letra
+  number <- grep("^[0-9]$",var_sn,value = T)
+  dates <- grep ( '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]',var_sn,value=T)
+  dat_som <- grep(',',var_sn,value=T)    
+            
+  if (length(dat_som) > 0) {
+    var_sn <- unlist (strsplit(var_sn, split=","))
+    }
+
+
+  if (class(var_sn)=="character" ){
+    if (length(unique(var_sn))< 58) { 
+      if (length(unique(number)) > 0) {
+        #para que haga bien el max cuando es un character number.
+        cat("[min,max]=[",min(as.integer(var_sn)),",",max(as.integer(var_sn)),"]") 
+        var_sn<-as.character(var_sn)
+        cat("\n")
+        cat("\n")
+        cat("\n")
+        cat("Values: ",head(sort(unique(var_sn),decreasing = TRUE),30))
+        cat("\n")
+      }else{
+        cat("[min,max]=[",min(var_sn),",",max(var_sn),"]")
+        cat("\n")
+        cat("\n")
+        cat("\n")
+        cat("Values: ",head(sort(unique(var_sn),decreasing = TRUE),30))
+        cat("\n")
+        }
+   
+      }else{
+        if (length(unique(var_sn)) == length(unique(dates))) {
+          var_sn<-as.character(var_sn)
+          cat("[min,max]=[",min(var_sn),",",max(var_sn),"]");
+          cat("\n");
+          cat("\n");
+        }
+        if (length(unique(var_sn)) == length(unique(number))) {
+          var_sn <- as.numeric(var_sn)
+        }
+        if (length(unique(var_sn)) == length(unique(letter))){
+          var_sn <- as.character(var_sn)
+        }
+    }
+  }
+  
+  
+  if (class(var_sn)=="numeric" | class(var_sn)=="integer" ){
+    if (length(unique(var_sn))< 58) {
+        var_sn <- as.factor(var_sn)
+        var_sn<-as.character(var_sn)
+        cat("[min,max]=[",min(as.integer(var_sn)),",",max(as.integer(var_sn)),"]");
+        cat("\n")
+        cat("\n")
+        cat("\n")
+        cat("Values: ",head(sort(unique(as.integer(var_sn)),decreasing = TRUE),30));
+        cat("\n")
+      }
+  }
+  
+
+  if (class(var_sn)=="numeric" | class(var_sn)=="integer"){
+    cat("[min,max]=[",min(var_sn),",",max(var_sn),"]")
+    plot(density(var_sn,na.rm=TRUE),col="blue")
+    
+    selected_index <- sample(1:length(var_sn),min(length(var_sn),1000000))
+    boxplot(var_sn[selected_index],col="blue")
+    print(kable( t(as.matrix(summary( var_sn )))))
+  } else if (class(var_sn)=="character" ){
+    cat("\n")
+    cat("\n")
+    cat("\n")
+    cat("Nº Categories = ",length(unique(var_sn)))
+    cat("\n")
+    cat("\n")
+    cat("\n")
+    emphasize.strong.rows(1)
+    pandoc.table(head(sort(100*table(var_sn)/length(var_sn),decreasing = TRUE),10))
+    if (length(unique(var_sn)) < 20) { 
+      barplot(head(sort(100*table(var_sn)/length(var_sn),decreasing = TRUE),10),las=2)
+      cat("\n")
+      cat("\n")
+      cat("\n")
+    }
+   
+  }
+}
+```
+
+
+
+
